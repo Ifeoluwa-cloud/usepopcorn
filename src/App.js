@@ -127,14 +127,14 @@ function Box({ children }) {
 
   return(
     <div className="box">
-            <button
-              className="btn-toggle"
-              onClick={() => setIsOpen((open) => !open)}
-            >
-              {isOpen ? "–" : "+"}
-            </button>
-            {isOpen && children}
-          </div>
+        <button
+          className="btn-toggle"
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? "–" : "+"}
+        </button>
+        {isOpen && children}
+    </div>
   );
 }
 
@@ -198,9 +198,9 @@ function WatchedSummary({ watched }) {
 function WatchedMoviesList({ watched }) {
   return(
     <ul className="list">
-                  {watched.map((movie) => (
-                    <WatchedMovie key={movie.imdbID} movie={movie}/>
-                  ))}
+        {watched.map((movie) => (
+          <WatchedMovie key={movie.imdbID} movie={movie}/>
+        ))}
     </ul>
   );
 }
