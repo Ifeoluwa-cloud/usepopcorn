@@ -117,7 +117,7 @@ function NumResults({ movies }){
 function Main({ children }) {
   return(
     <main className="main">
-      {children}
+        {children}
     </main>
   );
 }
