@@ -57,14 +57,21 @@ export default function App() {
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] =  useState(false);
   const query = "interstellar"
+  const [error, setError] = useState("")
 
   useEffect(function() {
     async function fetchMovies() {
-        setIsLoading(true);
+        try {setIsLoading(true);
         const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+        
+        if(!res.ok) throw new Error("Something went wrong with fetching movies") 
+        
         const data = await res.json();
         setMovies(data.Search);   
-        setIsLoading(false);      
+        setIsLoading(false);} catch (err) {
+          console.error(err.message);
+          setError(err.message)
+        }      
     } 
     fetchMovies();
   }, []);
@@ -93,6 +100,14 @@ export default function App() {
 function Loader() {
   return <p className="loader">Loading...</p>;
 };
+
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+    <span>emoji</span>{message}
+    </p>
+  );
+}
 
 function NavBar({ children }) {
   return(
