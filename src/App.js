@@ -114,7 +114,7 @@ function Loader() {
 function ErrorMessage({ sage }) {
   return (
     <p className="error">
-    <span>⛔</span>{sage}
+      <span>⛔</span>{sage}
     </p>
   );
 }
